@@ -22,7 +22,7 @@
 - パッケージをビルド
   ```
   cd ~/airobot_ws
-  colcon build --packages-select ai_robot_book_interfaces crane_plus_commander
+  colcon build --packages-select airobot_interfaces crane_plus_commander
   ```
 
 ## 使い方

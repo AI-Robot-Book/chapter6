@@ -7,7 +7,7 @@ from control_msgs.action import FollowJointTrajectory
 from threading import Event
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.executors import MultiThreadedExecutor
-from ai_robot_book_interfaces.srv import StringCommand
+from airobot_interfaces.srv import StringCommand
 from crane_plus_commander.kinematics import (
     from_gripper_ratio, gripper_in_range)
 
