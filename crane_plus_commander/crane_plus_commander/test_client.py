@@ -41,5 +41,4 @@ def main(args=None):
                         f'answer: {response.answer}')
                 break
 
-    test_client.destroy_node()
     rclpy.shutdown()
