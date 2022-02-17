@@ -164,7 +164,3 @@ def main(args=None):
     rclpy.shutdown()
     thread.join()
     print('終了')
-
-
-if __name__ == '__main__':
-    main()

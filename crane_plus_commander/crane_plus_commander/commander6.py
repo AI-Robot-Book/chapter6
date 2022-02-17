@@ -13,7 +13,6 @@ from crane_plus_commander.kinematics import (
 
 
 class Commander(Node):
-    """サービスサーバとなり，CRANE+のコントローラへアクションの要求を出すノード"""
     def __init__(self, timer=False):
         super().__init__('commander')
         self.callback_group = ReentrantCallbackGroup()
@@ -43,7 +42,6 @@ class Commander(Node):
             callback_group=self.callback_group)
 
     def command_callback(self, request, response):
-        """サービスのためのコールバック"""
         self.get_logger().info(f'command: {request.command}')
         words = request.command.split()
         if words[0] == 'set_joint':
@@ -56,7 +54,6 @@ class Commander(Node):
         return response
 
     def set_joint(self, words, response):
-        """関節を予め登録された姿勢に動かす（サービス用）"""
         if len(words) < 2:
             response.answer = f'NG {words[0]} argument required'
             return
@@ -69,7 +66,6 @@ class Commander(Node):
         response.answer = 'OK'
 
     def set_gripper(self, words, response):
-        """ハンドを指定された開閉度になるように動かす（サービス用）"""
         if len(words) < 2:
             response.answer = f'NG {words[0]} argument required'
             return
@@ -89,7 +85,6 @@ class Commander(Node):
         response.answer = 'OK'
 
     def check_action_result(self, r, response, message=''):
-        """アクションの結果を引数に取りエラーならばTrueを返す"""
         if message != '':
             message += ' '
         if r is None:
@@ -101,7 +96,6 @@ class Commander(Node):
         return False
 
     def send_goal_joint(self, q, time):
-        """関節値joint1〜joint4のリストと時間を引数に取りFollowJointTrajectoryのアクション要求をする"""
         goal_msg = FollowJointTrajectory.Goal()
         goal_msg.trajectory = JointTrajectory()
         goal_msg.trajectory.header.stamp = self.get_clock().now().to_msg()
@@ -119,7 +113,6 @@ class Commander(Node):
         return self.action_result
 
     def send_goal_gripper(self, gripper, time):
-        """グリッパの角度と時間を引数に取りFollowJointTrajectoryのアクション要求をする"""
         goal_msg = FollowJointTrajectory.Goal()
         goal_msg.trajectory = JointTrajectory()
         goal_msg.trajectory.header.stamp = self.get_clock().now().to_msg()
@@ -173,7 +166,3 @@ def main(args=None):
 
     rclpy.shutdown()
     print('終了')
-
-
-if __name__ == '__main__':
-    main()
