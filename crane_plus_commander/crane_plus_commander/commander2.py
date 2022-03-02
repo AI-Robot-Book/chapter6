@@ -37,7 +37,6 @@ class Commander(Node):
         msg.points[0].time_from_start = Duration(
             seconds=int(time), nanoseconds=(time-int(time))*1e9).to_msg()
         self.publisher_joint.publish(msg)
-        # self.get_logger().info('Publishing: "%s"' % msg)
 
     def publish_gripper(self, gripper, time):
         msg = JointTrajectory()
@@ -48,7 +47,6 @@ class Commander(Node):
         msg.points[0].time_from_start = Duration(
             seconds=int(time), nanoseconds=(time-int(time))*1e9).to_msg()
         self.publisher_gripper.publish(msg)
-        # self.get_logger().info('Publishing: "%s"' % msg)
 
 
 def main(args=None):
@@ -164,7 +162,7 @@ def main(args=None):
                     gripper = from_gripper_ratio(ratio)
 
                 # 指令値を範囲内に収める
-                if not joint_in_range(joint) == [True]*4:
+                if not all(joint_in_range(joint)):
                     print('関節指令値が範囲外')
                     joint = joint_prev.copy()
                     elbow_up = elbow_up_prev

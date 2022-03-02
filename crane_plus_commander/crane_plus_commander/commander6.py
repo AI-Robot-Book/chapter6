@@ -12,7 +12,9 @@ from crane_plus_commander.kinematics import (
     from_gripper_ratio, gripper_in_range)
 
 
+# CRANE+用のアクションへリクエストを送り，他からサービスを受け付けるノード
 class Commander(Node):
+
     def __init__(self, timer=False):
         super().__init__('commander')
         self.callback_group = ReentrantCallbackGroup()
@@ -32,9 +34,10 @@ class Commander(Node):
             'crane_plus_gripper_controller/follow_joint_trajectory',
             callback_group=self.callback_group)
         self.action_done_event = Event()
-        # 文字列と姿勢の組を保持する辞書
+        # 文字列とポーズの組を保持する辞書
         self.poses = {}
         self.poses['zeros'] = [0, 0, 0, 0]
+        self.poses['ones'] = [1, 1, 1, 1]
         self.poses['home'] = [0.0, -1.16, -2.01, -0.73]
         self.poses['carry'] = [-0.00, -1.37, -2.52, 1.17]
         self.service = self.create_service(

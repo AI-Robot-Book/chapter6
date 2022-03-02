@@ -9,7 +9,7 @@ import time
 import threading
 
 
-# CRANE+用のトピックへ指令をパブリッシュし，状態をサブスクライブするノード
+# CRANE+用のアクションへリクエストを送るノード
 class Commander(Node):
 
     def __init__(self, timer=False):
@@ -50,7 +50,6 @@ class Commander(Node):
         msg.points[0].time_from_start = Duration(
             seconds=int(time), nanoseconds=(time-int(time))*1e9).to_msg()
         self.publisher_joint.publish(msg)
-        # self.get_logger().info('Publishing: "%s"' % msg)
 
     def publish_gripper(self, gripper, time):
         msg = JointTrajectory()
@@ -61,7 +60,6 @@ class Commander(Node):
         msg.points[0].time_from_start = Duration(
             seconds=int(time), nanoseconds=(time-int(time))*1e9).to_msg()
         self.publisher_gripper.publish(msg)
-        # self.get_logger().info('Publishing: "%s"' % msg)
 
     def joint_state_callback(self, msg):
         d = {}
@@ -70,7 +68,6 @@ class Commander(Node):
         self.lock.acquire()
         self.joint = [d[x] for x in self.joint_names]
         self.gripper = d['crane_plus_joint_hand']
-        # print(self.joint, self.gripper)
         self.lock.release()
 
     def get_joint_gripper(self):
@@ -113,12 +110,12 @@ def main(args=None):
     # 最初の指令をパブリッシュする前に少し待つ
     time.sleep(1.0)
 
-    # 文字列と目標値の組を保持する辞書
+    # 文字列とポーズの組を保持する辞書
     goals = {}
     goals['zeros'] = [0, 0, 0, 0]
     goals['ones'] = [1, 1, 1, 1]
     goals['home'] = [0.0, -1.16, -2.01, -0.73]
-    goals['ng'] = [9, 9, 9, 9]
+    goals['carry'] = [-0.00, -1.37, -2.52, 1.17]
 
     # 指令値
     joint = [0.0, 0.0, 0.0, 0.0]
