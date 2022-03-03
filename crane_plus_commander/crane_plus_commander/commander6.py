@@ -47,8 +47,8 @@ class Commander(Node):
     def command_callback(self, request, response):
         self.get_logger().info(f'command: {request.command}')
         words = request.command.split()
-        if words[0] == 'set_joint':
-            self.set_joint(words, response)
+        if words[0] == 'set_pose':
+            self.set_pose(words, response)
         elif words[0] == 'set_gripper':
             self.set_gripper(words, response)
         else:
@@ -56,7 +56,7 @@ class Commander(Node):
         self.get_logger().info(f'answer: {response.answer}')
         return response
 
-    def set_joint(self, words, response):
+    def set_pose(self, words, response):
         if len(words) < 2:
             response.answer = f'NG {words[0]} argument required'
             return
@@ -133,8 +133,10 @@ class Commander(Node):
 
     def goal_response_callback(self, future):
         goal_handle = future.result()
-        get_result_future = goal_handle.get_result_async()
-        get_result_future.add_done_callback(self.get_result_callback)
+        if not goal_handle.accepted:
+            return
+        self.get_result_future = goal_handle.get_result_async()
+        self.get_result_future.add_done_callback(self.get_result_callback)
 
     def get_result_callback(self, future):
         self.action_result = future.result()
