@@ -63,15 +63,15 @@ def main(args=None):
     # 最初の指令をパブリッシュする前に少し待つ
     time.sleep(1.0)
 
-    # 指令値
+    # 初期ポーズへゆっくり移動させる
     joint = [0.0, -1.16, -2.01, -0.73]
     gripper = 0
     dt = 5
-    elbow_up = True
-
-    # 最初にゆっくり初期状態へ移動する
     commander.publish_joint(joint, dt)
     commander.publish_gripper(gripper, dt)
+
+    # 逆運動学の解の種類
+    elbow_up = True
 
     # キー読み取りクラスのインスタンス
     kb = KBHit()
@@ -187,7 +187,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
 
-    # 後始末
+    # 終了ポーズへゆっくり移動させる
     joint = [0.0, 0.0, 0.0, 0.0]
     gripper = 0
     dt = 5

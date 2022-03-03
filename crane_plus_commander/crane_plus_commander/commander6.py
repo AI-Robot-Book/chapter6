@@ -150,11 +150,11 @@ def main(args=None):
     # ノードクラスのインスタンス
     commander = Commander()
 
-    # 最初にゆっくり初期状態へ移動する
+    # 初期ポーズへゆっくり移動させる
     commander.send_goal_joint(commander.poses['home'], 5)
     commander.send_goal_gripper(from_gripper_ratio(1), 1)
-
     print('サービスサーバ待機')
+
     # Ctrl+cでエラーにならないようにKeyboardInterruptを捕まえる
     try:
         executor = MultiThreadedExecutor()
@@ -162,8 +162,8 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
 
-    # 後始末
     print('サービスサーバ停止')
+    # 終了ポーズへゆっくり移動させる
     commander.send_goal_joint(commander.poses['zeros'], 5)
     commander.send_goal_gripper(from_gripper_ratio(0), 1)
 

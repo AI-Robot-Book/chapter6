@@ -116,12 +116,10 @@ def main(args=None):
     goals['home'] = [0.0, -1.16, -2.01, -0.73]
     goals['carry'] = [-0.00, -1.37, -2.52, 1.17]
 
-    # 指令値
+    # 初期ポーズへゆっくり移動させる
     joint = [0.0, 0.0, 0.0, 0.0]
     gripper = 0
     dt = 5
-
-    # 最初にゆっくり初期状態へ移動する
     commander.publish_joint(joint, dt)
     commander.publish_gripper(gripper, dt)
 
@@ -139,9 +137,10 @@ def main(args=None):
             if name == '':
                 break
             if name not in goals:
+                print(f'{name}は登録されていません')
                 continue
 
-            print('目標を送出して結果待ち…')
+            print('目標を送って結果待ち…')
             r = commander.send_goal_joint(goals[name], dt)
             print(f'r.result.error_code: {r.result.error_code}')
             j, g = commander.get_joint_gripper()
@@ -150,7 +149,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
 
-    # 後始末
+    # 終了ポーズへゆっくり移動させる
     joint = [0.0, 0.0, 0.0, 0.0]
     gripper = 0
     dt = 5
