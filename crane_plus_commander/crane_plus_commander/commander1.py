@@ -55,8 +55,7 @@ def main(args=None):
     commander = Commander()
 
     # 別のスレッドでrclpy.spin()を実行する
-    thread = threading.Thread(
-        target=rclpy.spin, args=(commander, ), daemon=True)
+    thread = threading.Thread(target=rclpy.spin, args=(commander,))
     thread.start()
 
     # 最初の指令をパブリッシュする前に少し待つ
@@ -153,5 +152,4 @@ def main(args=None):
     commander.publish_gripper(gripper, dt)
 
     rclpy.shutdown()
-    thread.join()
     print('終了')
