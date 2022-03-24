@@ -41,7 +41,7 @@ class Commander(Node):
         self.poses['home'] = [0.0, -1.16, -2.01, -0.73]
         self.poses['carry'] = [-0.00, -1.37, -2.52, 1.17]
         self.service = self.create_service(
-            StringCommand, 'command', self.command_callback,
+            StringCommand, 'manipulation/command', self.command_callback,
             callback_group=self.callback_group)
 
     def command_callback(self, request, response):
