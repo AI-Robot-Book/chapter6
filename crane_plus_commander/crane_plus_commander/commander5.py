@@ -95,9 +95,9 @@ class Commander(Node):
         return tx, ty, tz, roll, pitch, yaw
 
 
-def main(args=None):
+def main():
     # ROSクライアントの初期化
-    rclpy.init(args=args)
+    rclpy.init()
 
     # ノードクラスのインスタンス
     commander = Commander()

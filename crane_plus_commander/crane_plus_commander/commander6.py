@@ -143,11 +143,11 @@ class Commander(Node):
         self.action_done_event.set()
 
 
-def main(args=None):
+def main():
     print('開始')
 
     # ROSクライアントの初期化
-    rclpy.init(args=args)
+    rclpy.init()
 
     # ノードクラスのインスタンス
     commander = Commander()

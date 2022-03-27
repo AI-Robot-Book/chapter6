@@ -17,8 +17,8 @@ class TestClient(Node):
         self.future = self.cli.call_async(self.req)
 
 
-def main(args=None):
-    rclpy.init(args=args)
+def main():
+    rclpy.init()
 
     test_client = TestClient()
 

@@ -79,9 +79,9 @@ class Commander(Node):
         print(f'[{j[0]:.2f}, {j[1]:.2f}, {j[2]:.2f}, {j[3]:.2f}] {g:.2f}')
 
 
-def main(args=None):
+def main():
     # ROSクライアントの初期化
-    rclpy.init(args=args)
+    rclpy.init()
 
     # ノードクラスのインスタンス
     commander = Commander()

@@ -47,9 +47,9 @@ class Commander(Node):
         self.publisher_gripper.publish(msg)
 
 
-def main(args=None):
+def main():
     # ROSクライアントの初期化
-    rclpy.init(args=args)
+    rclpy.init()
 
     # ノードクラスのインスタンス
     commander = Commander()

@@ -95,9 +95,9 @@ class Commander(Node):
         return self.action_client_joint.send_goal(goal_msg)
 
 
-def main(args=None):
+def main():
     # ROSクライアントの初期化
-    rclpy.init(args=args)
+    rclpy.init()
 
     # ノードクラスのインスタンス
     commander = Commander()
