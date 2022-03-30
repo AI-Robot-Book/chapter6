@@ -35,6 +35,13 @@ class KBHit:
     def __init__(self):
         '''Creates a KBHit object that you can call to do various keyboard things.
         '''
+        self.normal_term = True
+        self.set_term()
+
+    def set_term(self):
+
+        if not self.normal_term:
+            return
 
         if os.name == 'nt':
             pass
@@ -57,15 +64,22 @@ class KBHit:
             # Support normal-terminal reset at exit
             atexit.register(self.set_normal_term)
 
+        self.normal_term = False
+
     def set_normal_term(self):
         ''' Resets to normal terminal.  On Windows this is a no-op.
         '''
+
+        if self.normal_term:
+            pass
 
         if os.name == 'nt':
             pass
 
         else:
             termios.tcsetattr(self.fd, termios.TCSAFLUSH, self.old_term)
+
+        self.normal_term = True
 
     def getch(self):
         ''' Returns a keyboard character after kbhit() has been called.
