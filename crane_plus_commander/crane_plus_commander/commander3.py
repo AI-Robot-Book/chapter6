@@ -61,17 +61,14 @@ class Commander(Node):
         d = {}
         for i, name in enumerate(msg.name):
             d[name] = msg.position[i]
-        self.lock.acquire()
-        self.joint = [d[x] for x in self.joint_names]
-        self.gripper = d['crane_plus_joint_hand']
-        # print(self.joint, self.gripper)
-        self.lock.release()
+        with self.lock:
+            self.joint = [d[x] for x in self.joint_names]
+            self.gripper = d['crane_plus_joint_hand']
 
     def get_joint_gripper(self):
-        self.lock.acquire()
-        j = self.joint.copy()
-        g = self.gripper
-        self.lock.release()
+        with self.lock:
+            j = self.joint.copy()
+            g = self.gripper
         return j, g
 
     def timer_callback(self):
