@@ -4,13 +4,13 @@ from rclpy.duration import Duration
 from tf2_ros import LookupException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from tf_transformations import euler_from_quaternion
+from tf_transformations import euler_from_quaternion, quaternion_from_euler
 from geometry_msgs.msg import TransformStamped
 from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 import time
 import threading
-from math import cos, sin, pi
+from math import pi
 from crane_plus_commander.kbhit import KBHit
 from crane_plus_commander.kinematics import (
     forward_kinematics, from_gripper_ratio, gripper_in_range,
@@ -67,10 +67,11 @@ class Commander(Node):
         st.transform.translation.x = 0.0
         st.transform.translation.y = 0.0
         st.transform.translation.z = 0.090
-        st.transform.rotation.x = 0.0
-        st.transform.rotation.y = -sin(pi/4)
-        st.transform.rotation.z = 0.0
-        st.transform.rotation.w = cos(pi/4)
+        qu = quaternion_from_euler(0.0, -pi/2, 0.0)
+        st.transform.rotation.x = qu[0]
+        st.transform.rotation.y = qu[1]
+        st.transform.rotation.z = qu[2]
+        st.transform.rotation.w = qu[3]
         self._tf_publisher.sendTransform(st)
 
     def get_endtip_position(self):
