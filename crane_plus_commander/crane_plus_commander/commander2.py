@@ -180,7 +180,7 @@ def main():
                     print(f'gripper: {gripper:.2f}')
                     commander.publish_gripper(gripper, dt)
                     publish = True
-                # パブリッシュした場合は設定時間の分停止
+                # パブリッシュした場合は，設定時間と同じだけ停止
                 if publish:
                     time.sleep(dt)
             time.sleep(0.01)

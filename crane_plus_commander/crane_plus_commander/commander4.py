@@ -34,7 +34,7 @@ class Commander(Node):
         self.joint = [0]*4
         self.gripper = 0
         if timer:
-            timer_period = 0.5  # seconds
+            timer_period = 0.5  # [s]
             self.timer = self.create_timer(timer_period, self.timer_callback)
         self.action_client_joint = ActionClient(
             self, FollowJointTrajectory,

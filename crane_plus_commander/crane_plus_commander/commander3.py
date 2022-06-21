@@ -33,7 +33,7 @@ class Commander(Node):
         self.lock = threading.Lock()
         self.joint = [0]*4
         self.gripper = 0
-        timer_period = 0.5  # seconds
+        timer_period = 0.5  # [s]
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def publish_joint(self, q, time):
@@ -164,7 +164,7 @@ def main():
                     print(f'gripper: {gripper:.2f}')
                     commander.publish_gripper(gripper, dt)
                     publish = True
-                # パブリッシュした場合は設定時間の分停止
+                # パブリッシュした場合は，設定時間と同じだけ停止
                 if publish:
                     time.sleep(dt)
             time.sleep(0.01)
