@@ -1,14 +1,14 @@
 # CRANE+用のROS2ノード群を利用する簡単なノード
 
 升谷 保博  
-2022年2月  
+2022年6月  
 
 ## 概要
 
 - アールティ社が公開している同社のロボットアーム[CRANE+用のROS2ノード群 crane_plus](https://github.com/rt-net/crane_plus)を利用するノード．
 - ノードのプログラムは，Pythonで記述．
 - MoveIt2は使わずに，各関節へ指令値を送る．
-- [crane_plus_gazebo](https://github.com/rt-net/crane_plus/tree/master/crane_plus_gazebo)を使うことによってGazebo内のCRANE+を同じように動かすこともできる．
+- [crane_plus_ignition](https://github.com/rt-net/crane_plus/tree/master/crane_plus_ignition)を使うことによってIgnition Gazebo内のCRANE+を同じように動かすこともできる．
 - Ubuntu 20.04, ROS Foxyで作成・確認
 
 ## インストール
@@ -30,7 +30,7 @@
 - [crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って実機の設定を行う．
 
 - 端末1
-  - オーバレイヤの設定
+  - オーバレイの設定
     ```
     cd ~/airobot_ws
     source install/setup.bash
@@ -40,13 +40,13 @@
     ```
     ros2 launch crane_plus_commander crane_plus_control_rsp.launch.py
     ```
-  - 実機の代わりGazeboを使う場合
+  - 実機の代わりIgnition Gazeboを使う場合
     ```
-    ros2 launch crane_plus_commander crane_plus_gazebo_no_moveit.launch.py 
+    ros2 launch crane_plus_commander crane_plus_ignition_no_moveit.launch.py 
     ```
 
 - 端末2
-  - オーバレイヤの設定
+  - オーバレイの設定
     ```
     cd ~/airobot_ws
     source install/setup.bash

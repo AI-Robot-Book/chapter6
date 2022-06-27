@@ -1,6 +1,7 @@
 import os
 
 from ament_index_python.packages import get_package_share_directory
+from crane_plus_description.robot_description_loader import RobotDescriptionLoader
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import ExecuteProcess
@@ -9,7 +10,6 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch.substitutions import Command
 
 
 def generate_launch_description():
@@ -41,10 +41,11 @@ def generate_launch_description():
             condition=IfCondition(LaunchConfiguration('gui'))
         )
 
-    xacro_file = os.path.join(get_package_share_directory('crane_plus_description'),
-                              'urdf', 'crane_plus.urdf.xacro')
-    robot_description = {'robot_description': Command(
-        ['xacro ', xacro_file, ' use_gazebo:=', 'true'])}
+    description_loader = RobotDescriptionLoader()
+    description_loader.use_gazebo = 'true'
+    description = description_loader.load()
+
+    robot_description = {'robot_description': description}
 
     robot_state_publisher = Node(package='robot_state_publisher',
                                  executable='robot_state_publisher',
