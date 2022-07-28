@@ -9,7 +9,7 @@ import time
 import threading
 
 
-# CRANE+用のアクションへリクエストを送るノード
+# CRANE+ V2用のアクションへリクエストを送るノード
 class Commander(Node):
 
     def __init__(self, timer=False):

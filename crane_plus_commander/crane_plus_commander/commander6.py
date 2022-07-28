@@ -12,7 +12,7 @@ from crane_plus_commander.kinematics import (
     from_gripper_ratio, gripper_in_range)
 
 
-# CRANE+用のアクションへリクエストを送り，他からサービスを受け付けるノード
+# CRANE+ V2用のアクションへリクエストを送り，他からサービスを受け付けるノード
 class Commander(Node):
 
     def __init__(self, timer=False):

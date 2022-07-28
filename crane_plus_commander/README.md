@@ -1,4 +1,4 @@
-# CRANE+用のROS2ノード群を利用する簡単なノード
+# CRANE+ V2用のROS2ノード群を利用する簡単なノード
 
 升谷 保博  
 2022年6月  
@@ -8,7 +8,7 @@
 - アールティ社が公開している同社のロボットアーム[CRANE+用のROS2ノード群 crane_plus](https://github.com/rt-net/crane_plus)を利用するノード．
 - ノードのプログラムは，Pythonで記述．
 - MoveIt2は使わずに，各関節へ指令値を送る．
-- [crane_plus_ignition](https://github.com/rt-net/crane_plus/tree/master/crane_plus_ignition)を使うことによってIgnition Gazebo内のCRANE+を同じように動かすこともできる．
+- [crane_plus_ignition](https://github.com/rt-net/crane_plus/tree/master/crane_plus_ignition)を使うことによってIgnition Gazebo内のCRANE+ V2を同じように動かすこともできる．
 - Ubuntu 20.04, ROS Foxyで作成・確認
 
 ## インストール

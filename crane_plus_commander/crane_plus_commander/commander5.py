@@ -17,7 +17,7 @@ from crane_plus_commander.kinematics import (
     inverse_kinematics, joint_in_range, to_gripper_ratio)
 
 
-# CRANE+用のトピックへ指令をパブリッシュし，tfを利用するノード
+# CRANE+ V2用のトピックへ指令をパブリッシュし，tfを利用するノード
 class Commander(Node):
 
     def __init__(self):

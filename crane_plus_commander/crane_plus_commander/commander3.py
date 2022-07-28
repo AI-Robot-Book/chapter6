@@ -9,7 +9,7 @@ from crane_plus_commander.kbhit import KBHit
 from crane_plus_commander.kinematics import gripper_in_range, joint_in_range
 
 
-# CRANE+用のトピックへ指令をパブリッシュし，状態をサブスクライブするノード
+# CRANE+ V2用のトピックへ指令をパブリッシュし，状態をサブスクライブするノード
 class Commander(Node):
 
     def __init__(self):
