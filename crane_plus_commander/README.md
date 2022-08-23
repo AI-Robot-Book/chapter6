@@ -1,8 +1,5 @@
 # CRANE+ V2用のROS2ノード群を利用する簡単なノード
 
-升谷 保博  
-2022年6月  
-
 ## 概要
 
 - アールティ社が公開している同社のロボットアーム[CRANE+ V2用のROS2ノード群 crane_plus](https://github.com/rt-net/crane_plus)を利用するノード．
@@ -16,16 +13,27 @@
 - [crane_plusのREADME](https://github.com/rt-net/crane_plus/blob/master/README.md)に沿って作業する．
 
 - ROSのワークスペースを`~/airobot_ws`とする．
+  ```
+  cd ~/airobot_ws/src
+  ```
 
 - このパッケージを含むリポジトリを入手
+  ```
+  git clone https://github.com/AI-Robot-Book/chapter6
+  ```
+
 - サービスのインタフェースを定義しているパッケージを含むリポジトリを入手
+  ```
+  git clone https://github.com/AI-Robot-Book/chapter2
+  ```
+
 - パッケージをビルド
   ```
   cd ~/airobot_ws
   colcon build --packages-select airobot_interfaces crane_plus_commander
   ```
 
-## 使い方
+## 実行
 
 - [crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って実機の設定を行う．
 
@@ -89,3 +97,22 @@
     ros2 run crane_plus_commander test_client
     ```
 
+## ヘルプ
+
+## 著者
+
+升谷 保博
+
+## 履歴
+
+- 2022-08-23: ライセンス・ドキュメントの整備
+
+## ライセンス
+
+Copyright (c) 2022, MASUTANI Yasuhiro  
+All rights reserved.  
+This project is licensed under the Apache-2.0 license found in the LICENSE file in the root directory of this project.
+
+## 参考文献
+
+- https://github.com/rt-net/crane_plus

@@ -1,32 +1,15 @@
-# 「AI Robot Book」第6章のプログラム
-
-升谷 保博  
-2022年2月  
+# 第6章 マニピュレーション
 
 ## 概要
 
-- 以下のROSパッケージを含む
-  - [simple_arm/simple_arm_description](simple_arm/simple_arm_description)
-  - [crane_plus_commander](crane_plus_commander)
+ROS2とPythonで作って学ぶAIロボット入門（出村・萩原・升谷・タン著，講談社）第6章のサンプルプログラムと補足情報などを掲載しています．
 
-## インストール
+## ディレクトリ構成
 
-- ROSのワークスペースを`~/airobot_ws`とする．
-  ```
-  cd ~/airobot_ws/src
-  ```
+- [crane_plus_commander](crane_plus_commander)： CRANE+ V2用のROS2ノード群を利用する簡単なノード
 
-- このリポジトリを入手
-  ```
-  git clone https://github.com/AI-Robot-Book/chapter6.git
-  ```
+- [simple_arm/simple_arm_description](simple_arm/simple_arm_description)： 簡単な2自由度ロボットアームのモデル
 
-- サービスのインタフェースを定義しているパッケージを含む第2章のリポジトリを入手
-  ```
-  git clone https://github.com/AI-Robot-Book/chapter2.git
-  ```
+## 補足情報
 
-- 以降の作業は，それぞれのパッケージのドキュメントを参照．
-  - [simple_arm/README.md](simple_arm/README.md)
-  - [crane_plus_commander/README.md](crane_plus_commander/README.md)
-  
+今のところありません．
