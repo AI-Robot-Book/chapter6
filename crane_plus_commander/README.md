@@ -5,7 +5,7 @@
 
 ## 概要
 
-- アールティ社が公開している同社のロボットアーム[CRANE+用のROS2ノード群 crane_plus](https://github.com/rt-net/crane_plus)を利用するノード．
+- アールティ社が公開している同社のロボットアーム[CRANE+ V2用のROS2ノード群 crane_plus](https://github.com/rt-net/crane_plus)を利用するノード．
 - ノードのプログラムは，Pythonで記述．
 - MoveIt2は使わずに，各関節へ指令値を送る．
 - [crane_plus_ignition](https://github.com/rt-net/crane_plus/tree/master/crane_plus_ignition)を使うことによってIgnition Gazebo内のCRANE+ V2を同じように動かすこともできる．
