@@ -20,7 +20,7 @@ setup(
     maintainer='MASUTANI Yasuhiro',
     maintainer_email='ai-robot-book@googlegroups.com',
     description='Commander for crane_plus_control',
-    license='Apache-2.0',
+    license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [

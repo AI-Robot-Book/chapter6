@@ -5,7 +5,7 @@
   <version>0.1.0</version>
   <description>Commander for crane_plus_control</description>
   <maintainer email="ai-robot-book@googlegroups.com">MASUTANI Yasuhiro</maintainer>
-  <license>Apache-2.0</license>
+  <license>Apache License 2.0</license>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
