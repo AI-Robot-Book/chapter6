@@ -8,9 +8,13 @@
 - [crane_plus_ignition](https://github.com/rt-net/crane_plus/tree/master/crane_plus_ignition)を使うことによってIgnition Gazebo内のCRANE+ V2を同じように動かすこともできる．
 - Ubuntu 20.04, ROS Foxyで作成・確認
 
+## 準備
+
+- CRANE+ V2の実機を使う場合には，[crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って設定を行う．
+
 ## インストール
 
-- [crane_plusのREADME](https://github.com/rt-net/crane_plus/blob/master/README.md)に沿って作業する．
+- crane_plusパッケージをインストールする．[crane_plusのREADME](https://github.com/rt-net/crane_plus/blob/master/README.md)に沿って作業する．
 
 - ROSのワークスペースを`~/airobot_ws`とする．
   ```
@@ -35,7 +39,6 @@
 
 ## 実行
 
-- [crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って実機の設定を行う．
 
 - 端末1
   - オーバレイの設定
