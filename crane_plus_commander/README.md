@@ -10,7 +10,14 @@
 
 ## 準備
 
-- CRANE+ V2の実機を使う場合には，[crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って設定を行う．
+- CRANE+ V2の実機を使う場合には，[crane_plus_controlのREADME](https://github.com/rt-net/crane_plus/blob/master/crane_plus_control/README.md)に沿って設定を行う．  
+  - 要点
+    - 1 USB通信ポートの設定（`sudo chmod 666 /dev/ttyUSB0`など）
+    - 2 USB通信ポートのlatency_timerの変更
+    - 3 ロボットの各アクチュエータのReturn Delay Timeの設定
+  - 1と2については，`/etc/udev/rules.d`に設定ファイルを追加すると，USBに接続するたびに自動的に設定される
+  （[詳しくはROBOTIS社のサイトを参照](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_workbench/#copy-rules-file)）．
+  - Linuxをホストにして，この本のDockerイメージを利用する場合は，ホスト側でCRANE+ V2と接続する設定と動作確認を行う．
 
 ## インストール
 
